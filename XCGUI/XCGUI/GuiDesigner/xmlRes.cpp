@@ -84,6 +84,7 @@ HXMLRES WINAPI XXmlRes_LoadRes(int resID,wchar_t *pType) //从VC资源文件中加载
 	}
 
 	BOOL hrr=FreeResource(hGlobal);
+	g_Reslist.push_back(result);
 	return result;
 }
 
