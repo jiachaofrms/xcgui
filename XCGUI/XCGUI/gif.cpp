@@ -352,7 +352,7 @@ void WINAPI XGif_SetImageRes(HELE hEle,int id,wchar_t *pType)
 	if(pType)
 	{
 		HMODULE hInst=GetModuleHandle(NULL);
-		LPCTSTR lpRes=MAKEINTRESOURCE(id); 
+		wchar_t * lpRes=MAKEINTRESOURCE(id); 
 		HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 		if(NULL==hRsrc) return ;
 		HGLOBAL hGlobal=LoadResource(hInst,hRsrc);

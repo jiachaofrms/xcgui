@@ -1863,7 +1863,7 @@ void WINAPI XDraw_HImageSuper2_(HDRAW hDraw,HIMAGE hImage,RECT *pRcDest,RECT *pS
 /// @param nCount
 /// @param lpRect
 /// @param uFormat
-int WINAPI XDraw_DrawText_(HDRAW hDraw,LPCTSTR lpString,int nCount,LPRECT lpRect,UINT uFormat)
+int WINAPI XDraw_DrawText_(HDRAW hDraw,wchar_t * lpString,int nCount,RECT* lpRect,UINT uFormat)
 {
 	IsDrawDebug(hDraw,__FUNCTION__);
 	draw_xc_ *pDraw=(draw_xc_*)hDraw;
@@ -1887,7 +1887,7 @@ int WINAPI XDraw_DrawText_(HDRAW hDraw,LPCTSTR lpString,int nCount,LPRECT lpRect
 /// @param lpString
 /// @param cbString
 /// @return
-BOOL WINAPI XDraw_TextOut_(HDRAW hDraw,int nXStart,int nYStart,LPCTSTR lpString,int cbString)
+BOOL WINAPI XDraw_TextOut_(HDRAW hDraw,int nXStart,int nYStart,wchar_t * lpString,int cbString)
 {
 	IsDrawDebug(hDraw,__FUNCTION__);
 	draw_xc_ *pDraw=(draw_xc_*)hDraw;

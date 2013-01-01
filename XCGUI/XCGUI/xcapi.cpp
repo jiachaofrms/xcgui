@@ -494,7 +494,7 @@ HMODULE WINAPI XC_GetModuleHandle2()
 ///@param cyDesired 参见MSDN.
 ///@param fuLoad  参见MSDN.
 ///@return  如果成功返回图片句柄,失败返回NULL.
-HANDLE WINAPI XC_LoadImage(HINSTANCE hinst,LPCTSTR lpszName,UINT uType,int cxDesired,int cyDesired,UINT fuLoad)
+HANDLE WINAPI XC_LoadImage(HINSTANCE hinst,wchar_t * lpszName,UINT uType,int cxDesired,int cyDesired,UINT fuLoad)
 {
 	return LoadImage( hinst,lpszName,uType,cxDesired,cyDesired,fuLoad);
 }

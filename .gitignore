@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+*.ncb
 
 # Compiled Dynamic libraries
 *.so
@@ -11,3 +12,7 @@
 *.lai
 *.la
 *.a
+/xcgui/xcgui/Debug
+/xcgui/xcgui/Release
+/xcgui/Debug
+/xcgui/Release

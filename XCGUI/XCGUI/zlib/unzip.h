@@ -176,7 +176,7 @@ extern unzFile ZEXPORT unzOpen64 OF((const void *path));
      the "64" function take a const void* pointer, because the path is just the
        value passed to the open64_file_func callback.
      Under Windows, if UNICODE is defined, using fill_fopen64_filefunc, the path
-       is a pointer to a wide unicode string (LPCTSTR is LPCWSTR), so const char*
+       is a pointer to a wide unicode string (wchar_t * is LPCWSTR), so const char*
        does not describe the reality
 */
 

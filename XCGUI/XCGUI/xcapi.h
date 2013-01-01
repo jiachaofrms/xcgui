@@ -45,7 +45,7 @@ XC_API void WINAPI XC_CombineRect(RECT *pDest,RECT *pSrc1,RECT *pSrc2);
 XC_API HMODULE WINAPI XC_GetModuleHandle(wchar_t *pModuleName);
 XC_API HMODULE WINAPI XC_GetModuleHandle2();
 
-XC_API HANDLE WINAPI XC_LoadImage(HINSTANCE hinst,LPCTSTR lpszName,UINT uType,int cxDesired,int cyDesired,UINT fuLoad);
+XC_API HANDLE WINAPI XC_LoadImage(HINSTANCE hinst,wchar_t * lpszName,UINT uType,int cxDesired,int cyDesired,UINT fuLoad);
 
 
 XC_API HFONT WINAPI XC_CreateFont(wchar_t *pName=L"ËÎÌו",int size=12,BOOL bBold=FALSE,BOOL bItalic=FALSE,BOOL bUnderline=FALSE,BOOL bStrikeOut=FALSE);

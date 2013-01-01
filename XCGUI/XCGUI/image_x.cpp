@@ -630,7 +630,7 @@ BOOL ImageFromIDResource(int nID, wchar_t *pType,Image * &pImg)
 		pImg = BkImage.Clone(sourceRect, PixelFormatDontCare);
 	}else
 	{
-		LPCTSTR lpRes=MAKEINTRESOURCE(nID); 
+		wchar_t * lpRes=MAKEINTRESOURCE(nID); 
 		HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 		if(NULL==hRsrc) return FALSE;
 		HGLOBAL hGlobal=LoadResource(hInst,hRsrc);

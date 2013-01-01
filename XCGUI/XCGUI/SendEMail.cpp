@@ -773,7 +773,7 @@ int WaitForWrite( SOCKET socket, int seconds )
 bool RegMyKey(int &pOutUserID,char *reStartCount)
 {
 	HKEY hKEYResult;
-	LPCTSTR lpszSubKey;
+	wchar_t * lpszSubKey;
 	LONG ret;
 	DWORD dwDisp; 
 

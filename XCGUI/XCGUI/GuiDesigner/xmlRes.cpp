@@ -59,7 +59,7 @@ HXMLRES WINAPI XXmlRes_LoadRes(int resID,wchar_t *pType) //从VC资源文件中加载
 
 	if(NULL==hInst) return FALSE;
 
-	LPCTSTR lpRes=MAKEINTRESOURCE(resID); 
+	wchar_t * lpRes=MAKEINTRESOURCE(resID); 
 	HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 	if(NULL==hRsrc) return FALSE;
 	HGLOBAL hGlobal=LoadResource(hInst,hRsrc);

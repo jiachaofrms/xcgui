@@ -173,5 +173,5 @@ XC_API void WINAPI XDraw_HImageSuper2_(HDRAW hDraw,HIMAGE hImage,RECT *pRcDest,R
 
 
 //ÎÄ±¾
-XC_API int WINAPI XDraw_DrawText_(HDRAW hDraw,LPCTSTR lpString,int nCount,LPRECT lpRect,UINT uFormat);
-XC_API BOOL WINAPI XDraw_TextOut_(HDRAW hDraw,int nXStart,int nYStart,LPCTSTR lpString,int cbString);
+XC_API int WINAPI XDraw_DrawText_(HDRAW hDraw,wchar_t * lpString,int nCount,RECT* lpRect,UINT uFormat);
+XC_API BOOL WINAPI XDraw_TextOut_(HDRAW hDraw,int nXStart,int nYStart,wchar_t * lpString,int cbString);

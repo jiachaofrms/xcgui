@@ -70,7 +70,7 @@ HWINDOW WINAPI XC_LoadXML_WindowRes(int resID,wchar_t *pType,HXMLRES hXmlRes,HWN
 
 	if(NULL==hInst) return NULL;
 
-	LPCTSTR lpRes=MAKEINTRESOURCE(resID); 
+	wchar_t * lpRes=MAKEINTRESOURCE(resID); 
 	HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 	if(NULL==hRsrc) return NULL;
 	HGLOBAL hGlobal=LoadResource(hInst,hRsrc);
@@ -167,7 +167,7 @@ BOOL WINAPI XC_LoadXML_PageRes(HXCGUI hParent,int resID,wchar_t *pType,HXMLRES h
 
 	if(NULL==hInst) return FALSE;
 
-	LPCTSTR lpRes=MAKEINTRESOURCE(resID); 
+	wchar_t * lpRes=MAKEINTRESOURCE(resID); 
 	HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 	if(NULL==hRsrc) return FALSE;
 	HGLOBAL hGlobal=LoadResource(hInst,hRsrc);
@@ -1937,7 +1937,7 @@ BOOL WINAPI XC_LoadXML_StyleRes(HWINDOW hWindow,int resID,wchar_t *pType,HXMLRES
 
 	if(NULL==hInst) return FALSE;
 
-	LPCTSTR lpRes=MAKEINTRESOURCE(resID);
+	wchar_t * lpRes=MAKEINTRESOURCE(resID);
 	HRSRC   hRsrc=::FindResource(hInst,lpRes,pType);
 	if(NULL==hRsrc) return FALSE;
 	HGLOBAL hGlobal=LoadResource(hInst,hRsrc);
