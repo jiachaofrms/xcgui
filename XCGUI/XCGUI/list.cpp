@@ -1489,7 +1489,6 @@ void List_DrawHeader_BG(HELE hEle,HDRAW hDraw,RECT *pRect)  //绘制列表头背景
 		drawItem.rect=rcHeader;
 		drawItem.pText=NULL;
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(pList->pClass_Fun_Info_Item)
 		{
 			eventOrMsg_  event_;
@@ -1503,9 +1502,6 @@ void List_DrawHeader_BG(HELE hEle,HDRAW hDraw,RECT *pRect)  //绘制列表头背景
 		{
 			pList->pDrawItemHeader(hEle,&drawItem);
 		}
-#else
-		pList->pDrawItemHeader(hEle,&drawItem);
-#endif
 	}else //系统绘制
 	{
 		XDraw_GradientFill2_(hDraw,RGB(255,255,255),RGB(220,220,220),&rcHeader,1);
@@ -1540,7 +1536,6 @@ void List_DrawHeader_Item(HELE hEle,HDRAW hDraw)  //绘制列表头项
 		drawItem.rect=pHeader->rect;
 		drawItem.pText=XStr_GetBuffer(pHeader->hString);
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(pList->pClass_Fun_Info_Item)
 		{
 			eventOrMsg_  event_;
@@ -1554,11 +1549,7 @@ void List_DrawHeader_Item(HELE hEle,HDRAW hDraw)  //绘制列表头项
 		{
 			pList->pDrawItemHeader(hEle,&drawItem);
 		}
-#else
-		pList->pDrawItemHeader(hEle,&drawItem);
-#endif
 		XDraw_RestoreGDIOBJ_(hDraw);
-
 	}
 }
 
@@ -2405,7 +2396,6 @@ void List_DrawList(HELE hEle,HDRAW hDraw)
 				drawItem.rcCheck=pItem->rcCheck;
 				drawItem.pText=XStr_GetBuffer(pSubItem->hString);
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 				if(pList->pClass_Fun_Info_Item)
 				{
 					eventOrMsg_  event_;
@@ -2419,9 +2409,6 @@ void List_DrawList(HELE hEle,HDRAW hDraw)
 				{
 					pList->pDrawItem(hEle,&drawItem);
 				}
-#else
-				pList->pDrawItem(hEle,&drawItem);
-#endif
 			}
 			XDraw_RestoreGDIOBJ_(hDraw);
 		}

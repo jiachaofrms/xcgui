@@ -534,15 +534,15 @@ HFONT WINAPI XC_CreateFont(wchar_t *pName,int size,BOOL bBold,BOOL bItalic,BOOL 
 	return hFont;
 }
 
-/// @brief  初始化LOGFONT结构体.
-/// @param  pFont LOGFONT结构体指针.
+/// @brief  初始化LOGFONTW结构体.
+/// @param  pFont LOGFONTW结构体指针.
 /// @param  pName  字体名称.
 /// @param  size   字体大小.
 /// @param  bBold  是否为粗体.
 /// @param  bItalic  是否为斜体.
 /// @param  bUnderline   是否有下划线.
 /// @param  bStrikeOut   是否有删除线.
-void WINAPI XC_InitFont(LOGFONT *pFont,wchar_t *pName,int size,BOOL bBold,BOOL bItalic,BOOL bUnderline,BOOL bStrikeOut)
+void WINAPI XC_InitFont(LOGFONTW *pFont,wchar_t *pName,int size,BOOL bBold,BOOL bItalic,BOOL bUnderline,BOOL bStrikeOut)
 {
 	DWORD nWeight=FW_NORMAL;
 	if(bBold)

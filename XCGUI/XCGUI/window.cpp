@@ -2435,8 +2435,8 @@ void WINAPI XWnd_AddEle(HWINDOW hWindow,HELE hEle)
 	((ele_*)hEle)->bTopLevel=TRUE;
 	XArray_Add(((window_*)hWindow)->hArrayEle,hEle);
 	Ele_SetWindow(hEle,hWindow,TRUE);
-	if(hWindow)
-		Resource_AddEle(hEle);
+//	if(hWindow)
+//		Resource_AddEle(hEle);
 }
 
 /// @brief 添加元素到窗口非客户区.
@@ -2478,8 +2478,8 @@ void WINAPI XWnd_AddEleNC(HWINDOW hWindow,HELE hEle) //添加到非客户区
 	((ele_*)hEle)->bClient=FALSE;
 	XArray_Add(((window_*)hWindow)->hArrayEleNC,hEle);
 	Ele_SetWindow(hEle,hWindow,FALSE);
-	if(hWindow)
-		Resource_AddEle(hEle);
+//	if(hWindow)
+//		Resource_AddEle(hEle);
 }
 
 /// @brief 添加菜单条到窗口的非客户区,当窗口大小改变时,自动调整菜单条大小.

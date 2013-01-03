@@ -14,5 +14,9 @@
 *.a
 /xcgui/xcgui/Debug
 /xcgui/xcgui/Release
+/xcgui/xcgui/DLL_Debug
+/xcgui/xcgui/DLL_Release
 /xcgui/Debug
 /xcgui/Release
+/xcgui/DLL_Debug
+/xcgui/DLL_Release

@@ -836,7 +836,6 @@ void MenuWnd_UpdateUI(HWINDOW hWindow,int parentID)
 		{
 			menu_ *pItem=(menu_*)XMTree_GetTraverseData(pObj->hMTreeData,i);
 			
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 			if(pObj->pMenuData->pClass_Fun_Info_updateUI)
 			{
 				eventOrMsg_  event_;
@@ -850,9 +849,6 @@ void MenuWnd_UpdateUI(HWINDOW hWindow,int parentID)
 			{
 				pObj->pMenuData->pUpdateUI((HMENUX)pObj->pMenuData,pItem->id);
 			}
-#else
-			pObj->pMenuData->pUpdateUI((HMENUX)(pObj->pMenuData),pItem->id);
-#endif
 		}
 	}
 
@@ -880,7 +876,7 @@ BOOL CALLBACK MenuWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 		drawBG.hDraw=hDraw;
 		drawBG.parentItemId=-1;
 		drawBG.hImage=pObj->pMenuData->hBkImage;
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
+
 		if(pObj->pMenuData->pClass_Fun_Info_drawBG)
 		{
 			eventOrMsg_  event_;
@@ -894,9 +890,6 @@ BOOL CALLBACK MenuWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 		{
 			pObj->pMenuData->pDrawBG((HMENUX)pObj->pMenuData,&drawBG);
 		}
-#else
-		pObj->pMenuData->pDrawBG((HMENUX)(pObj->pMenuData),&drawItem);
-#endif
 	}else //系统绘制
 	{
 		MenuWnd_DrawBackground((window_*)hWindow,hDraw,pObj->pMenuData->hBkImage);
@@ -921,7 +914,6 @@ BOOL CALLBACK MenuWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 			else
 				drawItem.pText=NULL;
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 			if(pObj->pMenuData->pClass_Fun_Info)
 			{
 				eventOrMsg_  event_;
@@ -935,9 +927,6 @@ BOOL CALLBACK MenuWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 			{
 				pObj->pMenuData->pDrawItem((HMENUX)pObj->pMenuData,&drawItem);
 			}
-#else
-			pObj->pMenuData->pDrawItem((HMENUX)(pObj->pMenuData),&drawItem);
-#endif
 		}
 	}else //系统绘制
 	{
@@ -1905,7 +1894,6 @@ BOOL MenuChildWnd_Init(HWINDOW hWindow,int x,int y,int cx,int cy,HWND hWndParent
 			{
 				pItem=(menu_*)XMTree_GetTraverseData(pObj->pMainWnd->hMTreeData,i);
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 				if(pObj->pMainWnd->pMenuData->pClass_Fun_Info)
 				{
 					eventOrMsg_  event_;
@@ -1919,9 +1907,6 @@ BOOL MenuChildWnd_Init(HWINDOW hWindow,int x,int y,int cx,int cy,HWND hWndParent
 				{
 					pObj->pMainWnd->pMenuData->pUpdateUI((HMENUX)pObj->pMainWnd->pMenuData,pItem->id);
 				}
-#else
-				pObj->pMainWnd->pMenuData->pUpdateUI((HMENUX)(pObj->pMainWnd->pMainWnd->pMenuData),pItem->id);
-#endif
 			}
 		}
 		XMTree_EndTraverse(pObj->pMainWnd->hMTreeData);
@@ -1942,7 +1927,6 @@ BOOL CALLBACK MenuChildWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 		drawBG.parentItemId=pObj->parentItemId;
 		drawBG.hImage=pObj->pMainWnd->pMenuData->hBkImage;
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(pObj->pMainWnd->pMenuData->pClass_Fun_Info_drawBG)
 		{
 			eventOrMsg_  event_;
@@ -1956,9 +1940,6 @@ BOOL CALLBACK MenuChildWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 		{
 			pObj->pMainWnd->pMenuData->pDrawBG((HMENUX)pObj->pMainWnd->pMenuData,&drawBG);
 		}
-#else
-		pObj->pMainWnd->pMenuData->pDrawBG((HMENUX)(pObj->pMainWnd->pMainWnd->pMenuData),&drawItem);
-#endif
 	}else //系统绘制
 	{
 		MenuWnd_DrawBackground((window_*)hWindow,hDraw,pObj->pMainWnd->pMenuData->hBkImage);
@@ -1984,7 +1965,6 @@ BOOL CALLBACK MenuChildWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 			else
 				drawItem.pText=NULL;
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 			if(pObj->pMainWnd->pMenuData->pClass_Fun_Info)
 			{
 				eventOrMsg_  event_;
@@ -1998,9 +1978,6 @@ BOOL CALLBACK MenuChildWnd_OnDrawWindow(HWINDOW hWindow,HDRAW hDraw)
 			{
 				pObj->pMainWnd->pMenuData->pDrawItem((HMENUX)pObj->pMainWnd->pMenuData,&drawItem);
 			}
-#else
-			pObj->pMainWnd->pMenuData->pDrawItem((HMENUX)(pObj->pMainWnd->pMainWnd->pMenuData),&drawItem);
-#endif
 		}
 	}else //系统绘制
 	{

@@ -337,8 +337,7 @@ BOOL WINAPI XEle_Destroy(HELE hEle)  //销毁
 	}
 
 	//从资源管理器中移除
-	if(pEle->pWindow)
-		Resource_RemoveEle(hEle);
+	Resource_RemoveEle(hEle);
 
 	XArray_Destroy(pEle->hArrayEle);
 	pEle->hArrayEle=NULL;
@@ -1007,8 +1006,8 @@ BOOL WINAPI XEle_AddEle(HELE hEle, HELE hNewEle,int flag, HELE hDestEle,int inde
 		bResult =XArray_insert(pEle->hArrayEle,pNew,index);
 		break;
 	}
-	if(pEle->pWindow)
-		Resource_AddEle(hNewEle);
+//	if(pEle->pWindow)
+//		Resource_AddEle(hNewEle);
 	return bResult;
 }
 
@@ -1083,8 +1082,7 @@ void WINAPI XEle_RemoveEle(HELE hEle) //移除元素,但不销毁
 		exit(0);
 	}
 
-	if(pEle->pWindow)
-		Resource_RemoveEle(hEle);
+	//Resource_RemoveEle(hEle);
 
 	//TODO:工具条,菜单条,及状态条,的移除
 
@@ -4772,7 +4770,9 @@ void WINAPI XEle_SetFont(HELE hEle,HFONTX hFontX)
 {
 	IsEleDebug(hEle,__FUNCTION__);
 	if(hFontX)
+	{
 		IsFontDebug(hFontX,__FUNCTION__);
+	}
 
 	Font_AddFontX(((ele_*)hEle)->hFontX,hFontX);
 }

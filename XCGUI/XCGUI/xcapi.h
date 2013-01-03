@@ -49,7 +49,7 @@ XC_API HANDLE WINAPI XC_LoadImage(HINSTANCE hinst,wchar_t * lpszName,UINT uType,
 
 
 XC_API HFONT WINAPI XC_CreateFont(wchar_t *pName=L"ËÎÌו",int size=12,BOOL bBold=FALSE,BOOL bItalic=FALSE,BOOL bUnderline=FALSE,BOOL bStrikeOut=FALSE);
-XC_API void  WINAPI XC_InitFont(LOGFONT *pFont,wchar_t *pName,int size,BOOL bBold=FALSE,BOOL bItalic=FALSE,BOOL bUnderline=FALSE,BOOL bStrikeOut=FALSE);
+XC_API void  WINAPI XC_InitFont(LOGFONTW *pFont,wchar_t *pName,int size,BOOL bBold=FALSE,BOOL bItalic=FALSE,BOOL bUnderline=FALSE,BOOL bStrikeOut=FALSE);
 
 XC_API  void* WINAPI XC_Malloc(int size);
 XC_API  void  WINAPI XC_Free(void *p);

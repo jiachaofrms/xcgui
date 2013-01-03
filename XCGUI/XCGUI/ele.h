@@ -101,9 +101,7 @@ struct ele_  //T1 元素基类
 	POINT    elePt;        //配合滚动视图,元素实际坐标.
 	HSTRING  hToolTipsStr; //工具提示内容
 	COLORREF bkColor;      //背景颜色
-//	HFONT    hFont;        //字体
-	//LOGFONT  fontInfo;   //当前字体信息
-	HFONTX   hFontX;
+	HFONTX   hFontX;       //当前字体信息
 
 	COLORREF textColor;    //字体颜色
 	window_  *pWindow;     //所属窗口指针

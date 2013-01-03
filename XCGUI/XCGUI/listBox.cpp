@@ -729,7 +729,7 @@ BOOL CALLBACK ListBox_OnDrawScrollView(HELE hEle,HDRAW hDraw)
 				drawItem.rcCheck.right=left+XLISTBOX_CHECK_SIZE;
 				drawItem.rcCheck.bottom=drawItem.rcCheck.top+pObj->height;
 			}
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
+
 			if(pObj->pClass_Fun_Info)
 			{
 				eventOrMsg_  event_;
@@ -743,9 +743,6 @@ BOOL CALLBACK ListBox_OnDrawScrollView(HELE hEle,HDRAW hDraw)
 			{
 				pObj->pDrawItem(hEle,&drawItem);
 			}
-#else
-			pObj->pDrawItem(hEle,&drawItem);
-#endif
 			XDraw_RestoreGDIOBJ_(hDraw);
 		}
 		return TRUE;

@@ -78,13 +78,13 @@ HXMLRES WINAPI XXmlRes_LoadRes(int resID,wchar_t *pType) //从VC资源文件中加载
 				memcpy(pData,lpData,dwSize);
 				pData[dwSize]=0;
 				result=XXmlRes_LoadRes2(pData);
+				g_Reslist.push_back(result);
 				free(pData);
 			}
 		}
 	}
 
 	BOOL hrr=FreeResource(hGlobal);
-	g_Reslist.push_back(result);
 	return result;
 }
 

@@ -7,7 +7,7 @@ struct font_xc_
 	object_ object;
 	//-----------------------
 	HFONT     hFont;
-	LOGFONT   info;
+	LOGFONTW   info;
 
 	int    refCount; //引用计数,当值为0时 销毁对象
 };
@@ -17,7 +17,7 @@ struct font_xc_
 
 XC_API HFONTX WINAPI XFont_Create(int size);//创建字体
 XC_API HFONTX WINAPI XFont_Create2(wchar_t *pName=L"宋体",int size=12,BOOL bBold=FALSE,BOOL bItalic=FALSE,BOOL bUnderline=FALSE,BOOL bStrikeOut=FALSE);
-XC_API HFONTX WINAPI XFont_CreateEx(LOGFONT *pFontInfo);
+XC_API HFONTX WINAPI XFont_CreateEx(LOGFONTW *pFontInfo);
 XC_API void  WINAPI XFont_Destroy(HFONTX hFontX);  //销毁字体
 XC_API HFONT WINAPI XFont_GetHFONT(HFONTX hFontX);
 

@@ -201,20 +201,11 @@ public:
 		/* [out] */ VARIANT *pVarResult,
 		/* [out] */ EXCEPINFO *pExcepInfo,
 		/* [out] */ UINT *puArgErr);
-
-	//BOOL ReadLocalCatalog(shelf_data_ *data,VARIANT *pVarResult,wchar_t *pPath); //读取本地目录
-//	BOOL GetUpdateCatalog(wchar_t *pID,wchar_t *pPath);  //获取最新章节
-
-	//BOOL GetCatalogUrl(wchar_t *pID,std::wstring &pOut);  //根据ID查询目录URL
-
 };
 
 struct IE_Event_ //事件过程链表
 {
 	void    *pFun; //函数指针
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//	void  *pClass_Fun_Info;//消息事件回调函数信息指针
-//#endif
 	IE_Event_ *pNext;
 };
 
@@ -223,16 +214,11 @@ struct IE_Event_Header_  //消息或事件 链表头
 {
 	int   Event;      //事件类型
 	IE_Event_  *pList;  //注册的消息或事件体链表  
-	//pFunEventConversion  pFunEventConv; //事件转换函数
-//	void *pFunEventConv;
 };
 
 struct IE_External_ //事件过程链表
 {
 	void    *pFun; //函数指针
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//	void  *pClass_Fun_Info;//消息事件回调函数信息指针
-//#endif
 	IE_External_ *pNext;
 };
 
@@ -243,8 +229,6 @@ struct IE_External_Header_  //js外部函数 链表头
 	int      paramCount;    //参数个数
 
 	IE_External_  *pList;  //注册的消息或事件体链表  
-	//pFunEventConversion  pFunEventConv; //事件转换函数
-//	void *pFunEventConv;
 };
 
 //IE控件

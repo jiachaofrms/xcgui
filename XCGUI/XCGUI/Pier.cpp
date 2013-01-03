@@ -19,7 +19,7 @@ void Pier_Init(pier_ *pPier,int eleType,HWINDOW hWindow)
 
 	AddTypeDebug((HELE)pPier,XC_PIER);
 
-	LOGFONT info;
+	LOGFONTW info;
 	info.lfHeight=12;
 	info.lfWidth=0;
 	info.lfEscapement=-900;

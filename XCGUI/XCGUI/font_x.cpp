@@ -10,7 +10,7 @@
 /// @return 字体句柄.
 HFONTX WINAPI XFont_Create(int size)  //创建字体
 {
-	LOGFONT info;
+	LOGFONTW info;
 	info.lfHeight=size;
 	info.lfWidth=0;
 	info.lfEscapement=0;
@@ -39,7 +39,7 @@ HFONTX WINAPI XFont_Create(int size)  //创建字体
 /// @return 字体句柄.
 HFONTX WINAPI XFont_Create2(wchar_t *pName,int size,BOOL bBold,BOOL bItalic,BOOL bUnderline,BOOL bStrikeOut)
 {
-	LOGFONT info;
+	LOGFONTW info;
 	DWORD nWeight=FW_NORMAL;
 	if(bBold)
 		nWeight=FW_BOLD;
@@ -65,7 +65,7 @@ HFONTX WINAPI XFont_Create2(wchar_t *pName,int size,BOOL bBold,BOOL bItalic,BOOL
 /// @brief 创建炫彩字体.
 /// @param  pFontInfo  字体信息.
 /// @return 字体句柄.
-HFONTX WINAPI XFont_CreateEx(LOGFONT *pFontInfo)
+HFONTX WINAPI XFont_CreateEx(LOGFONTW *pFontInfo)
 {
 	HFONT  hFont=CreateFontIndirect(pFontInfo);
 	if(NULL==hFont)

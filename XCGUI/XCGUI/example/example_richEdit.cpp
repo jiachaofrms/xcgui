@@ -12,13 +12,13 @@
 #if 0
 
 HELE hRichEdit=NULL;
-LOGFONT  Font1;
-LOGFONT  Font2;
-LOGFONT  Font3;
-LOGFONT  Font4;
-LOGFONT  Font5;
-LOGFONT  Font6;
-LOGFONT  Font7;
+LOGFONTW  Font1;
+LOGFONTW  Font2;
+LOGFONTW  Font3;
+LOGFONTW  Font4;
+LOGFONTW  Font5;
+LOGFONTW  Font6;
+LOGFONTW  Font7;
 
 BOOL CALLBACK MyEventBtnClick(HELE hEle,HELE hEventEle) //按钮点击事件
 {
@@ -435,7 +435,7 @@ void OnFontChangT2() //选择内容 字体改变
 	int	EndColumn=0;
 	if(XRichEdit_GetSelectPos(hRichEdit2,&BeginRow,&BeginColumn,&EndRow,&EndColumn))
 	{
-		LOGFONT  font;
+		LOGFONTW  font;
 		XC_InitFont(&font,name,size,bBold2,bItalic2,bUnderline2);
 		XRichEdit_SetItemFontEx(hRichEdit2,BeginRow,BeginColumn,EndRow,EndColumn,&font);
 		XEle_RedrawEle(hRichEdit2);

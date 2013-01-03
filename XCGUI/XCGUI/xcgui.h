@@ -1664,10 +1664,6 @@ enum xcgui_fun_type //函数类型
 //事件回调类型
 typedef BOOL (CALLBACK *pFunClassEventMsg)(eventOrMsg_ *pEvent,xcgui_fun_type funType);
 
-//#endif //XCGUI_PLUS
-
-
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 
 //{
 //以下API内部使用

@@ -1840,7 +1840,6 @@ void ListView_DrawItem(HELE hEle,listView_drawItem_ *pItem)
 	listView_ *pListView=(listView_*)hEle;
 	if(pListView->pDrawItem)	//用户自绘
 	{
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(pListView->pClass_Fun_Info)
 		{
 			eventOrMsg_  event_;
@@ -1854,9 +1853,6 @@ void ListView_DrawItem(HELE hEle,listView_drawItem_ *pItem)
 		{
 			pListView->pDrawItem(hEle,pItem);
 		}
-#else
-		pList->pDrawItem(hEle,&pItem);
-#endif
 	}else  //系统绘制
 	{
 		if(STATE_SELECT==pItem->state)
@@ -1932,7 +1928,6 @@ void ListView_DrawGroup(HELE hEle,listView_drawGroup_ *pGroup)
 
 	if(pListView->pDrawGroup)	//用户自绘
 	{
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(pListView->pClass_Fun_Info_group)
 		{
 			eventOrMsg_  event_;
@@ -1946,9 +1941,6 @@ void ListView_DrawGroup(HELE hEle,listView_drawGroup_ *pGroup)
 		{
 			pListView->pDrawGroup(hEle,pGroup);
 		}
-#else
-		pList->pDrawGroup(hEle,&pGroup);
-#endif
 	}else  //系统绘制
 	{
 

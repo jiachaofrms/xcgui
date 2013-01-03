@@ -93,7 +93,7 @@ BOOL WINAPI XRichEdit_InsertText(HELE hEle,wchar_t *pText,int row,int column) //
 /// @param bColor  是否指定颜色.
 /// @param color   颜色值.
 /// @return 成功返回TRUE,否则相反.
-BOOL WINAPI XRichEdit_InsertTextEx(HELE hEle,wchar_t *pText,int row,int column,LOGFONT *pFont,BOOL bColor,COLORREF color)
+BOOL WINAPI XRichEdit_InsertTextEx(HELE hEle,wchar_t *pText,int row,int column,LOGFONTW *pFont,BOOL bColor,COLORREF color)
 {
 	IsRichEditDebug(hEle,__FUNCTION__);
 	if(NULL==pText)
@@ -313,11 +313,11 @@ BOOL WINAPI XRichEdit_InsertData(HELE hEle,void *pData,int row,int column)
 	for (int i=0;i<pHeader->fontCount;i++)
 	{
 		XArray_Add(hArrayFont,pPosition);
-		pPosition+=sizeof(LOGFONT);
+		pPosition+=sizeof(LOGFONTW);
 	}
 
 	richEdit_font_Info_  *pFontInfo=NULL;
-	LOGFONT *pFont=NULL;
+	LOGFONTW *pFont=NULL;
 	richEdit_clipboard_char_   *pItemChar=NULL;
 	richEdit_clipboard_iamge_  *pItemImage=NULL;
 
@@ -381,7 +381,7 @@ BOOL WINAPI XRichEdit_InsertData(HELE hEle,void *pData,int row,int column)
 
 				if(pItemChar->fontIndex>=0)
 				{
-					pFont=(LOGFONT*)XArray_GetAt(hArrayFont,pItemChar->fontIndex);
+					pFont=(LOGFONTW*)XArray_GetAt(hArrayFont,pItemChar->fontIndex);
 					pFontInfo=RichEdit_GetFont(hEle,pFont);
 					SelectObject(hdc,pFontInfo->hFont);
 					pItemCharNew->pFontInfo=pFontInfo;;
@@ -891,7 +891,7 @@ BOOL WINAPI XRichEdit_SetItemFont(HELE hEle,int row,int column, HFONT hFont)
 /// @param endColumn    结束行列索引.
 /// @param pFont        字体信息.
 /// @return 成功返回TRUE,否则相反.
-BOOL WINAPI XRichEdit_SetItemFontEx(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn,LOGFONT *pFont)
+BOOL WINAPI XRichEdit_SetItemFontEx(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn,LOGFONTW *pFont)
 {
 	IsRichEditDebug(hEle,__FUNCTION__);
 	if(beginRow>endRow)
@@ -1481,12 +1481,12 @@ void* WINAPI XRichEdit_GetData(HELE hEle)
 	clipboard_header.size=0;
 	clipboard_header.name;
 	wcscpy(clipboard_header.name,L"XCGUI_RichEdit");
-	GetObject(XEle_GetFont(hEle),sizeof(LOGFONT),&clipboard_header.font);
+	GetObject(XEle_GetFont(hEle),sizeof(LOGFONTW),&clipboard_header.font);
 
 	richEdit_font_Info_  *pFontInfo=NULL;
 
 	byteSize=sizeof(richEdit_clipboard_header_);
-	byteSize=byteSize+clipboard_header.fontCount*sizeof(LOGFONT);
+	byteSize=byteSize+clipboard_header.fontCount*sizeof(LOGFONTW);
 
 	byteSize=byteSize+DataSize;
 	clipboard_header.size=byteSize;
@@ -1505,8 +1505,8 @@ void* WINAPI XRichEdit_GetData(HELE hEle)
 	{
 		pFontInfo=(richEdit_font_Info_*)XArray_GetAt(pRichEdit->hArrayFont,i);
 		pFontInfo->info;
-		memcpy(pPosition,&pFontInfo->info,sizeof(LOGFONT));
-		pPosition+=sizeof(LOGFONT);
+		memcpy(pPosition,&pFontInfo->info,sizeof(LOGFONTW));
+		pPosition+=sizeof(LOGFONTW);
 	}
 
 	for (int i=0;i<countItem;i++)
@@ -2212,7 +2212,7 @@ BOOL RichEdit_DeleteEx_MultiLine(HELE hEle,int beginRow,int beginColumn,int endR
 	return TRUE;
 }
 
-richEdit_font_Info_* RichEdit_GetFont(HELE hEle,LOGFONT *pFont)  //检查字体
+richEdit_font_Info_* RichEdit_GetFont(HELE hEle,LOGFONTW *pFont)  //检查字体
 {
 	if(NULL==pFont)
 		return NULL;
@@ -2791,12 +2791,12 @@ void RichEdit_Clipboard_Copy_Data(HELE hEle,HARRAY hArrayItem,int DataSize)
 	clipboard_header.size=0;
 	clipboard_header.name;
 	wcscpy(clipboard_header.name,L"XCGUI_RichEdit");
-	GetObject(XEle_GetFont(hEle),sizeof(LOGFONT),&clipboard_header.font);
+	GetObject(XEle_GetFont(hEle),sizeof(LOGFONTW),&clipboard_header.font);
 
 	richEdit_font_Info_  *pFontInfo=NULL;
 
 	byteSize=sizeof(richEdit_clipboard_header_);
-	byteSize=byteSize+clipboard_header.fontCount*sizeof(LOGFONT);
+	byteSize=byteSize+clipboard_header.fontCount*sizeof(LOGFONTW);
 
 	byteSize=byteSize+DataSize;
 	clipboard_header.size=byteSize;
@@ -2815,8 +2815,8 @@ void RichEdit_Clipboard_Copy_Data(HELE hEle,HARRAY hArrayItem,int DataSize)
 	{
 		pFontInfo=(richEdit_font_Info_*)XArray_GetAt(pRichEdit->hArrayFont,i);
 		pFontInfo->info;
-		memcpy(pBuf,&pFontInfo->info,sizeof(LOGFONT));
-		pBuf+=sizeof(LOGFONT);
+		memcpy(pBuf,&pFontInfo->info,sizeof(LOGFONTW));
+		pBuf+=sizeof(LOGFONTW);
 	}
 
 	int countItem=XArray_GetCount(hArrayItem);
@@ -2908,12 +2908,12 @@ BOOL RichEdit_Clipboard_Paste_Data(HELE hEle)
 	for (int i=0;i<pHeader->fontCount;i++)
 	{
 		XArray_Add(hArrayFont,pPosition);
-		pPosition+=sizeof(LOGFONT);
+		pPosition+=sizeof(LOGFONTW);
 	}
 
 	int row=0;
 	int column=0;
-	LOGFONT *pFontInfo=NULL;;
+	LOGFONTW *pFontInfo=NULL;;
 
 	wchar_t  ch[2]={0};
 	richEdit_clipboard_char_   *pItemChar=NULL;
@@ -2928,7 +2928,7 @@ BOOL RichEdit_Clipboard_Paste_Data(HELE hEle)
 			pFontInfo=NULL;
 			if(pItemChar->fontIndex>=0)
 			{
-				pFontInfo=(LOGFONT*)XArray_GetAt(hArrayFont,pItemChar->fontIndex);
+				pFontInfo=(LOGFONTW*)XArray_GetAt(hArrayFont,pItemChar->fontIndex);
 			}
 			XRichEdit_InsertTextEx(hEle,ch,row,column,pFontInfo,pItemChar->bColor,pItemChar->color);
 			pPosition+=sizeof(richEdit_clipboard_char_);

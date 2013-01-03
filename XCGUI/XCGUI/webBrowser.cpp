@@ -1119,10 +1119,6 @@ void Web_OnDestroy(HXCGUI hWebBrowser)
 			pDel=pEvent;
 			pEvent=pEvent->pNext;
 
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//			if(pDel->pClass_Fun_Info) free(pDel->pClass_Fun_Info);
-//#endif
-
 			free(pDel);
 		}
 		free(pHeader);
@@ -1140,10 +1136,6 @@ void Web_OnDestroy(HXCGUI hWebBrowser)
 		{
 			pDel=pEvent;
 			pEvent=pEvent->pNext;
-
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//			if(pDel->pClass_Fun_Info) free(pDel->pClass_Fun_Info);
-//#endif
 
 			free(pDel);
 		}
@@ -1190,9 +1182,6 @@ void WINAPI XWeb_RegEvent(HXCGUI hWebBrowser,int type,void *pFun) //注册IE事件
 		pMsg->pFun=pFun;
 		pMsg->pNext=NULL;
 
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//		pMsg->pClass_Fun_Info=NULL;
-//#endif
 		pHeader->pList=pMsg;
 
 		//TODO:排序
@@ -1204,9 +1193,6 @@ void WINAPI XWeb_RegEvent(HXCGUI hWebBrowser,int type,void *pFun) //注册IE事件
 		pEvent->pFun=pFun;
 		pEvent->pNext=NULL;
 
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//		pMsg->pClass_Fun_Info=NULL;
-//#endif
 		IE_Event_Header_  *pHeader=(IE_Event_Header_*)Array_GetAt(pObject->hArray_event,index);
 		if(NULL==pHeader->pList)
 		{
@@ -2138,9 +2124,6 @@ void Web_RegExternalFunctionX(HXCGUI hWebBrowser,wchar_t *pFunName,void* pFun,in
 		pMsg->pFun=pFun;
 		pMsg->pNext=NULL;
 
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//		pMsg->pClass_Fun_Info=NULL;
-//#endif
 		pHeader->pList=pMsg;
 
 		//TODO:排序
@@ -2152,9 +2135,6 @@ void Web_RegExternalFunctionX(HXCGUI hWebBrowser,wchar_t *pFunName,void* pFun,in
 		pEvent->pFun=pFun;
 		pEvent->pNext=NULL;
 
-//#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
-//		pMsg->pClass_Fun_Info=NULL;
-//#endif
 		IE_External_Header_  *pHeader=(IE_External_Header_*)Array_GetAt(pObject->hArray_external,index);
 		if(NULL==pHeader->pList)
 		{

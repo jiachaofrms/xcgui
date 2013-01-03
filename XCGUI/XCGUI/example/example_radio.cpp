@@ -63,20 +63,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPTSTR lpC
 	return 0;
 }*/
 
-int APIENTRY _tWinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
-{
-	XInitXCGUI();
-
-	//创建窗口
-	HWINDOW hWindow=XWnd_CreateWindow(400,200,300,200,L"炫彩界面库-窗口");
-	XWnd_ShowWindow(hWindow,SW_SHOW);
-
-	HELE hPic=XPic_Create(10,10,100,100,hWindow);
-	XPic_SetImage(hPic,XImage_LoadFile(L"gif\\111.gif"));
-	XRunXCGUI();
-	return 0;
-}
-
 # if 0
 
 //按钮分组测试

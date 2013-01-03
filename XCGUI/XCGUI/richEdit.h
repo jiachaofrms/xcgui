@@ -20,7 +20,7 @@ enum rictEdit_ItemType_ //项类型
 struct richEdit_font_Info_
 {
 	HFONT    hFont;
-	LOGFONT  info;
+	LOGFONTW  info;
 	int      index; //字体索引
 };
 
@@ -137,7 +137,7 @@ struct richEdit_
 XC_API HELE WINAPI XRichEdit_Create(int x, int y, int cx, int cy,HXCGUI hParent=NULL);
 
 XC_API BOOL WINAPI XRichEdit_InsertText(HELE hEle,wchar_t *pText,int row,int column); //插入文本内容
-XC_API BOOL WINAPI XRichEdit_InsertTextEx(HELE hEle,wchar_t *pText,int row,int column,LOGFONT *pFont,BOOL bColor=FALSE,COLORREF color=0);
+XC_API BOOL WINAPI XRichEdit_InsertTextEx(HELE hEle,wchar_t *pText,int row,int column,LOGFONTW *pFont,BOOL bColor=FALSE,COLORREF color=0);
 XC_API BOOL WINAPI XRichEdit_InsertData(HELE hEle,void *pData,int row,int column); 
 // BOOL WINAPI XRichEdit_InsertEle(HELE hEle,HELE hNew); //插入元素,到当前位置
 XC_API BOOL WINAPI XRichEdit_InsertImage(HELE hEle,HIMAGE hImage,wchar_t *pImagePath,int row,int column); //插入图片,到当前位置
@@ -147,7 +147,7 @@ XC_API BOOL WINAPI XRichEdit_InsertImageGif(HELE hEle,wchar_t *pImageName,int ro
 XC_API void WINAPI XRichEdit_SetText(HELE hEle,wchar_t *pText);  //设置文本内容,会清空之前的内容
 XC_API BOOL WINAPI XRichEdit_SetPos(HELE hEle,int row,int column); //设置插入符位置
 // BOOL WINAPI XRichEdit_SetItemFont(HELE hEle,int row,int column,HFONT hFont);//设置项字体
-XC_API BOOL WINAPI XRichEdit_SetItemFontEx(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn,LOGFONT *pFont);
+XC_API BOOL WINAPI XRichEdit_SetItemFontEx(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn,LOGFONTW *pFont);
 
 // BOOL WINAPI XRichEdit_SetItemColor(HELE hEle,int row,int column,COLORREF color);//设置颜色
 XC_API BOOL WINAPI XRichEdit_SetItemColorEx(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn,COLORREF color);
@@ -206,7 +206,7 @@ BOOL RichEdit_Clipboard_CopyMultiLine(HELE hEle,int beginRow,int beginColumn,int
 BOOL RichEdit_DeleteEx_SingleLine(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn);
 BOOL RichEdit_DeleteEx_MultiLine(HELE hEle,int beginRow,int beginColumn,int endRow,int endColumn);
 
-richEdit_font_Info_* RichEdit_GetFont(HELE hEle,LOGFONT *pFont);  //检查字体
+richEdit_font_Info_* RichEdit_GetFont(HELE hEle,LOGFONTW *pFont);  //检查字体
 BOOL RichEdit_IsUnUseFont(HARRAY hArrayLine,richEdit_font_Info_ *pFontInfo);
 
 //私有方法:
@@ -273,7 +273,7 @@ BOOL CALLBACK RichEdit_OnMouseMove_View(HELE hEle,UINT flags,POINT *pPt);
 struct richEdit_clipboard_header_ //头信息
 {
 	wchar_t    name[15]; //开始标识  XCGUI_RichEdit
-	LOGFONT    font;     //默认字体
+	LOGFONTW    font;     //默认字体
 	COLORREF   color;    //默认颜色
 	int        size;     //内容总长度,字节为单位
 	int        itemCount;      //内容项数量,项为字体或图片
@@ -282,7 +282,7 @@ struct richEdit_clipboard_header_ //头信息
 
 //struct richEdit_clipboard_fontTable_ //字体表
 //{
-//	LOGFONT  font;  //字体信息
+//	LOGFONTW  font;  //字体信息
 //};
 
 struct richEdit_clipboard_char_ //内容元素

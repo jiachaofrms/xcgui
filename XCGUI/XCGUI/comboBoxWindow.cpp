@@ -79,9 +79,13 @@ BOOL CALLBACK ComboBoxWnd_OnEventListBoxSelect(HELE hEle,HELE hEventEle,int inde
 			HWINDOW hWindow=XEle_GetHWindow(hEle);
 			comboBoxWindow_ *pWnd=COMBOBOXWINDOW(hWindow);
 			comboBox_ *pComboBox=(comboBox_*)pWnd->hComboBox;
+			HWND hWnd=XWnd_GetHWnd(hWindow);
 
 			ComboBoxWnd_SendEvent(pComboBox,index);
-			ComboBox_DestroyPopupWnd(pWnd->hComboBox);
+			if(IsWindow(hWnd))
+			{
+				ComboBox_DestroyPopupWnd(pWnd->hComboBox);
+			}
 		}
 	}
 	return TRUE;

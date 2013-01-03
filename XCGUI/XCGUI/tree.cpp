@@ -1218,7 +1218,6 @@ void Tree_UserDrawItem(HELE hEle,HDRAW hDraw,treeNode_ *pNode)
 		else
 			drawItem.state=STATE_LEAVE;
 
-#ifdef	XCGUI_PLUS  //C++类支持,对类成员函数注册的支持
 		if(TREE(hEle)->pClass_Fun_Info)
 		{
 			eventOrMsg_  event_;
@@ -1232,9 +1231,6 @@ void Tree_UserDrawItem(HELE hEle,HDRAW hDraw,treeNode_ *pNode)
 		{
 			TREE(hEle)->pDrawItem(hEle,&drawItem);
 		}
-#else
-		TREE(hEle)->pDrawItem(hEle,&drawItem);
-#endif
 		XDraw_RestoreGDIOBJ_(hDraw);
 		Tree_UserDrawItem(hEle,hDraw,pNode->pRight);
 		Tree_UserDrawItem(hEle,hDraw,pNode->pLeft);
